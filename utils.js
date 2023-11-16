@@ -170,11 +170,11 @@ function getModelViewMatrix() {
     const rotationMatrixZ = createRotationMatrix_Z(60 * Math.PI / 180); 
 
     modelViewMatrix = multiplyMatrices(multiplyMatrices(multiplyMatrices(multiplyMatrices(scalingMatrix, translationMatrix), rotationMatrixX), rotationMatrixY), rotationMatrixZ);
-
+    console.log(modelViewMatrix);
     return modelViewMatrix;
 }
 
-
+modelViewMatrix = getModelViewMatrix();
 
 
 /**
@@ -193,15 +193,19 @@ function getPeriodicMovement(startTime) {
       0, 0, 1, 0,
       0, 0, 0, 1
     ]);
-  
-    let modelViewMatrix = createIdentityMatrix();
-    const scalingMatrix = createScaleMatrix(0.5, 0.5, 1);
-    const translationMatrix = createTranslationMatrix(0.3, -0.25, 0);
-    const rotationMatrixX = createRotationMatrix_X(30 * Math.PI / 180); 
-    const rotationMatrixY = createRotationMatrix_Y(45 * Math.PI / 180); 
-    const rotationMatrixZ = createRotationMatrix_Z(60 * Math.PI / 180); 
-    modelViewMatrix = multiplyMatrices(multiplyMatrices(multiplyMatrices(multiplyMatrices(scalingMatrix, translationMatrix), rotationMatrixX), rotationMatrixY), rotationMatrixZ);
-  
+   
+    const modelViewMatrix = new Float32Array([
+        0.1767766922712326, -0.3061862071122423,
+        0.3535533845424652, 0.15000000596046448,
+        0.4633883326744428,  0.0634132435040824,
+       -0.1767766922712326,              -0.125,
+        0.1268264870081648,   0.780330057776724,
+        0.6123724142244846,                   0,
+                         0,                   0,
+                         0,                   1
+     ]);
+
+     
     // Duration of each half of the animation (in milliseconds)
     const halfDuration = 5000;
 
